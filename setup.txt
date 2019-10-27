@@ -1,0 +1,6 @@
+pandas
+keras
+matplotlib
+tensorflow
+librosa
+path.py
