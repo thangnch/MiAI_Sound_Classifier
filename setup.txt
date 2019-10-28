@@ -4,3 +4,4 @@ matplotlib
 tensorflow
 librosa
 path.py
+pillow

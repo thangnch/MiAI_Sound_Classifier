@@ -24,9 +24,10 @@ import numpy as np
 from keras_preprocessing.image import ImageDataGenerator
 
 train_data_path='data/train/'
-test_data_path='data/train/'
+test_data_path='data/test/'
 wav_path = 'data/wav/'
 
+# Ham tao ra spectrogram tu file wav
 def create_spectrogram(filename,name, file_path):
     plt.interactive(False)
     clip, sample_rate = librosa.load(filename, sr=None)
@@ -45,6 +46,7 @@ def create_spectrogram(filename,name, file_path):
     plt.close('all')
     del filename,name,clip,sample_rate,fig,ax,S
 
+# Lap trong thu muc data/wav/train va tao ra 4000 file anh spectrogram
 Data_dir=np.array(glob(wav_path+"train/*"))
 
 for file in Data_dir[0:4000]:
@@ -53,12 +55,13 @@ for file in Data_dir[0:4000]:
 
 gc.collect()
 
+# Lap trong thu muc data/wav/test va tao ra 3000 file anh spectrogram
 Test_dir=np.array(glob(wav_path+"test/*"))
 
-i=0
-for file in Test_dir[i:i+3000]:
+
+for file in Test_dir[0:3000]:
     filename,name = file,file.split('/')[-1].split('.')[0]
-    create_spectrogram_test(filename,name,test_data_path)
+    create_spectrogram(filename,name,test_data_path)
 
 gc.collect()
 
